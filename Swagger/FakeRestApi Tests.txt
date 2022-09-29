@@ -1,0 +1,138 @@
+ 1st Request:
+ 
+-	 API: GET /api/v1/Authors
+	 Test Case: Response is 200 OK
+	 Expected Result: 200 OK
+	 Actual Result: 200 OK
+	 Status: Pass
+
+-	 API: GET /api/v1/Authors
+	 Test Case: Response time is less than 1 second
+	 Expected Result: < 1000 ms
+	 Actual Result: 326 ms
+	 Status: Pass
+	 
+-	 API: GET /api/v1/Authors
+	 Test Case: Every Object in response body contains id, idBook, firstName, lastName
+	 Expected Result: All objects contain id, idBook, firstName, lastName
+	 Actual Result: All objects do contain id, idBook, firstName, lastName
+	 Status: Pass
+
+2nd Request:
+
+-	 API: POST /api​/v1​/Authors
+	 Body:
+		 {
+		  "id": 1,
+		  "idBook": 10,
+		  "firstName": "Mahmoud" ,
+		  "lastName":  "Saeed"
+		 }	 
+	 Test Case: Response is 201 Created
+	 Expected Result: 201 Created
+	 Actual Result: 200 OK
+	 Status: Fail
+	 
+-	 API: POST /api​/v1​/Authors
+	 Body:
+		 {
+		  "id": 1,
+		  "idBook": 10,
+		  "firstName": "",
+		  "lastName": ""
+		 }
+	 Test Case: First Name and Last Name are mandatory
+	 Expected Result: 201 Created
+	 Actual Result: 400 Error: Bad Request or Empty Names
+	 Status: Fail
+	 
+3rd Request:
+
+-	 API: GET /api​/v1​/Authors​/authors​/books​/{idBook}
+	 Test Case: All returned objects should contain idBook = 1
+	 Expected Result: idBook = 1 in all returned data
+	 Actual Result: idBook = 1
+	 Status: Pass
+	 
+-	 API: GET /api​/v1​/Authors​/authors​/books​/{idBook}
+	 Test Case: Response body size is between 100 and 1000
+	 Expected Result: Body size between 100 and 1000 Bytes
+	 Actual Result: 410 Bytes
+	 Status: Pass
+	 	 
+4th Request: 
+
+-	 API: PUT /api​/v1​/Authors​/{id}
+	 Body:
+		{
+		  "id": 1,
+		  "idBook": 10,
+		  "firstName": "Mahmoud 11",
+		  "lastName": "Saeed 11"
+		}
+	 Test Case: Data should be updated in reponse 
+	 Expected Result: {
+					  "id": 1,
+					  "idBook": 10,
+					  "firstName": "Mahmoud 11",
+					  "lastName": "Saeed 11"
+					  }
+	 Actual Result: {
+					  "id": 1,
+					  "idBook": 10,
+					  "firstName": "Mahmoud 11",
+					  "lastName": "Saeed 11"
+					}
+	 Status: Pass
+	 
+-	 API: PUT /api​/v1​/Authors​/{id}
+	 Body:
+		 {
+		  "id": 1,
+		  "idBook": 10,
+		  "firstName": "",
+		  "lastName":  ""
+		 }
+	 Test Case: First Name and Last Name are not missing
+	 Expected Result: 200 OK
+	 Actual Result: 400 Error: Bad Request
+	 Status: Fail
+	 
+5th Request:
+	 
+-	 API: GET /api​/v1​/Authors​/{id}
+	 Test Case: Search for ID 1000
+	 Expected Result: 200 OK
+	 Actual Result: 404 Error: Not Found
+	 Status: Fail
+	 
+-	 API: GET /api​/v1​/Authors​/{id}
+	 Test Case: Make sure data is updated for specific ID 1 (pervious Put request)
+	 Expected Result: {
+					  "id": 1,
+					  "idBook": 10,
+					  "firstName": "Mahmoud 11",
+					  "lastName": "Saeed 11"
+					  }
+	 Actual Result: {
+					  "id": 1,
+					  "idBook": 1,
+					  "firstName": "First Name 1",
+					  "lastName": "Last Name 1"
+					}
+	 Status: Fail
+	 
+6th Request:
+
+-	 API: DELETE /api​/v1​/Authors​/{id}
+	 Test Case: Delete data for ID 1
+	 Expected Result: 200 OK
+	 Actual Result: 200 OK
+	 Status: Pass
+
+-	 API: DELETE /api​/v1​/Authors​/{id}
+	 Test Case: Make sure data is deleted for ID 1 (Run GET for ID 1)
+	 Expected Result: 404 Error: Not Found
+	 Actual Result: 200 OK
+	 Status: Fail	 	 
+	 

@@ -1,0 +1,506 @@
+{
+	"info": {
+		"_postman_id": "1d519b57-d4b8-4b09-939c-cb27c65d9102",
+		"name": "FakeRestApi Testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22501391"
+	},
+	"item": [
+		{
+			"name": "Authors",
+			"item": [
+				{
+					"name": "Get Author By ID",
+					"item": [
+						{
+							"name": "Test if ID 1000 exists",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"//Test Case: Search for ID 1000\r",
+											"pm.test(\"Verify existence of Author 1000\",function()\r",
+											"{\r",
+											"    pm.expect(pm.response.code).to.equal(200)\r",
+											"    pm.expect(pm.response.status).to.equal(\"OK\")\r",
+											"});\r",
+											"pm.environment.set(\"authorID\", 1);\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.environment.set(\"authorID\", 1000);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BaseURL}}/api/v1/Authors/{{authorID}}",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"Authors",
+										"{{authorID}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Test if data is updated",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// Test Case: Make sure data is updated for specific ID 1 (pervious Post request)\r",
+											"var jsonData = pm.response.json();\r",
+											"var firstName = pm.environment.get(\"firstName\");\r",
+											"var lastName = pm.environment.get(\"lastName\");\r",
+											"\r",
+											"pm.test(\"Verify data is updated after Put request\", function()\r",
+											"{\r",
+											"    pm.expect(jsonData.firstName).to.be.equal(firstName)\r",
+											"    pm.expect(jsonData.lastName).to.be.equal(lastName)\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BaseURL}}/api/v1/Authors/{{authorID}}",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"Authors",
+										"{{authorID}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Delete Author by ID",
+					"item": [
+						{
+							"name": "Verify response is 200 OK",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// Test Case: Delete data for ID 1\r",
+											"pm.test(\"Respone is 200 OK\",function()\r",
+											"{\r",
+											"    pm.expect(pm.response.code).to.equal(200)\r",
+											"    pm.expect(pm.response.status).to.equal(\"OK\")\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{BaseURL}}/api/v1/Books/{{authorID}}",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"Books",
+										"{{authorID}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Verify Author Data is Deleted",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"//Test Case: Make sure data is deleted for ID 1 \r",
+											"pm.test(\"Verify Author Data is Deleted\",function()\r",
+											"{\r",
+											"    pm.expect(pm.response.code).to.equal(404)\r",
+											"    pm.expect(pm.response.status).to.equal(\"Not Found\")\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BaseURL}}/api/v1/Books/{{authorID}}",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"Books",
+										"{{authorID}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Create New Author",
+					"item": [
+						{
+							"name": "Verify Response is 201 Created",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// Test Case: Response is 201 Created\r",
+											"pm.test(\"Respone is 201 Created\",function()\r",
+											"{\r",
+											"    pm.expect(pm.response.code).to.equal(201)\r",
+											"    pm.expect(pm.response.status).to.equal(\"Created\")\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 1,\r\n    \"idBook\": 10,\r\n    \"firstName\": \"Mahmoud\" ,\r\n    \"lastName\":  \"Saeed\"\r\n}\t",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/api/v1/Authors",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"Authors"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Verify Existence of First and Last Name",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// Test Case: First Name and Last Name are mandatory\r",
+											"\r",
+											"var jsonData = pm.response.json();\r",
+											"pm.test(\"Verify Existence of First and Last Name\", function()\r",
+											"{\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([201,200])\r",
+											"    pm.expect(pm.response.status).to.be.oneOf([\"Created\",\"OK\"])\r",
+											"\r",
+											"    pm.expect(jsonData).to.have.property('firstName')\r",
+											"    pm.expect(jsonData.firstName).to.not.be.empty\r",
+											"\r",
+											"    pm.expect(jsonData).to.have.property('lastName')\r",
+											"    pm.expect(jsonData.lastName).to.not.be.empty\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 1,\r\n    \"idBook\": 10,\r\n    \"firstName\":\"\" ,\r\n    \"lastName\": \"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/api/v1/Authors",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"Authors"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Update Author Info",
+					"item": [
+						{
+							"name": "Verify Data is updated",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// Test Case: Data should be updated in reponse \r",
+											"var jsonData = pm.response.json();\r",
+											"var firstName = pm.environment.get(\"firstName\");\r",
+											"var lastName = pm.environment.get(\"lastName\");\r",
+											"  \r",
+											"pm.test(\"Verify Data is updated\", function()\r",
+											"{\r",
+											"    pm.expect(jsonData.firstName).to.be.equal(firstName)\r",
+											"    pm.expect(jsonData.lastName).to.be.equal(lastName)\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 1,\r\n    \"idBook\": 10,\r\n    \"firstName\": \"{{firstName}}\",\r\n    \"lastName\": \"{{lastName}}\"\r\n}\r\n\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/api/v1/Authors/{{authorID}}",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"Authors",
+										"{{authorID}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Verify Existence of First and Last Name",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// Test Case: First Name and Last Name are not missing\r",
+											"var jsonData = pm.response.json();\r",
+											"pm.test(\"Verify Existence of First and Last Name\", function()\r",
+											"{\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([201,200])\r",
+											"    pm.expect(pm.response.status).to.be.oneOf([\"Created\",\"OK\"])\r",
+											"\r",
+											"    pm.expect(jsonData).to.have.property('firstName')\r",
+											"    pm.expect(jsonData.firstName).to.not.be.empty\r",
+											"\r",
+											"    pm.expect(jsonData).to.have.property('lastName')\r",
+											"    pm.expect(jsonData.lastName).to.not.be.empty\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 1,\r\n    \"idBook\": 10,\r\n    \"firstName\": \"\",\r\n    \"lastName\": \"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/api/v1/Authors/{{authorID}}",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"Authors",
+										"{{authorID}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get All Authors",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test Case: Response is 200 OK\r",
+									"pm.test(\"Respone is 200 OK\",function()\r",
+									"{\r",
+									"    pm.expect(pm.response.code).to.equal(200)\r",
+									"    pm.expect(pm.response.status).to.equal(\"OK\")\r",
+									"});\r",
+									"\r",
+									"// Test Case: Response time is less than 1 second\r",
+									"pm.test(\"Response time less than 1 second\", function()\r",
+									"{\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000)\r",
+									"});\r",
+									"\r",
+									"//Test Case: Every Object in response body contains id, idBook, firstName, lastName\r",
+									"var jsonData = pm.response.json();\r",
+									"pm.test(\"Verify Object Contents\",function()\r",
+									"{\r",
+									"    for (let i=0; i<jsonData.length;i++)\r",
+									"    {\r",
+									"        pm.expect(jsonData[i].id).to.be.a(\"number\");\r",
+									"        pm.expect(jsonData[i].id).to.not.be.null\r",
+									"\r",
+									"        pm.expect(jsonData[i].idBook).to.be.a(\"number\");\r",
+									"        pm.expect(jsonData[i].idBook).to.not.be.null\r",
+									"\r",
+									"        pm.expect(jsonData[i].firstName).to.be.a(\"string\");\r",
+									"        pm.expect(jsonData[i].firstName).to.not.be.empty\r",
+									"\r",
+									"        pm.expect(jsonData[i].lastName).to.be.a(\"string\");\r",
+									"        pm.expect(jsonData[i].lastName).to.not.be.empty\r",
+									"\r",
+									"    }\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseURL}}/api/v1/Authors",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"Authors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Book Authors By Book ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test Case: All returned objects should contain idBook = 1\r",
+									"var jsonData = pm.response.json();\r",
+									"var bookID = parseInt(pm.environment.get(\"bookID\"));\r",
+									"\r",
+									"pm.test(\"Verify bookID = 1\",function()\r",
+									"{\r",
+									"    for (let i=0; i<jsonData.length;i++)\r",
+									"    {\r",
+									"        pm.expect(jsonData[i].idBook).to.equal(bookID);\r",
+									"\r",
+									"    }\r",
+									"});\r",
+									"\r",
+									"// Test Case: Response body size is between 100 and 1000\r",
+									"pm.test(\"Check Response size\", function () \r",
+									"{\r",
+									"    pm.expect(pm.response.responseSize).to.be.within(100,1000);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseURL}}/api/v1/Authors/authors/books/{{bookID}}",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"Authors",
+								"authors",
+								"books",
+								"{{bookID}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
