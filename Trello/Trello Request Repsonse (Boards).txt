@@ -1,0 +1,23 @@
+"boards": [
+        {
+            "id": "625b0f45fdc1e206912d7788",
+            "name": "Aquisize",
+            "closed": false,
+            "idOrganization": "625b0f45fdc1e206912d7776",
+            "pinned": false
+        },
+        {
+            "id": "61b0bcb548a3825671ffa609",
+            "name": "MVP",
+            "closed": false,
+            "idOrganization": "61b0ba3c2eca4687b237b07c",
+            "pinned": false
+        },
+        {
+            "id": "614a2fcc4b5cb70984d827e5",
+            "name": "Testing Phase",
+            "closed": false,
+            "idOrganization": "614a2f776703505279188fdb",
+            "pinned": false
+        }
+    ]

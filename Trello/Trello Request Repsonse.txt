@@ -1,0 +1,123 @@
+{
+    "id": "61b3a0e188e2215c05dc3d12",
+    "aaId": "61b3a0de6d002b006b65988a",
+    "activityBlocked": false,
+    "avatarHash": "a5cd326039d37c2f60791b426f49324c",
+    "avatarUrl": "https://trello-members.s3.amazonaws.com/61b3a0e188e2215c05dc3d12/a5cd326039d37c2f60791b426f49324c",
+    "bio": "",
+    "bioData": null,
+    "confirmed": true,
+    "fullName": "Mahmoud Saeed Osman ١٨١٠٢٨٦٧ ඞ",
+    "idEnterprise": null,
+    "idEnterprisesDeactivated": [],
+    "idMemberReferrer": "5e2ae6018a872d4564c0311a",
+    "idPremOrgsAdmin": [],
+    "initials": "Mඞ",
+    "memberType": "normal",
+    "nonPublic": {},
+    "nonPublicAvailable": true,
+    "products": [],
+    "url": "https://trello.com/mahmoudsaeedosman",
+    "username": "mahmoudsaeedosman",
+    "status": "disconnected",
+    "aaBlockSyncUntil": null,
+    "aaEmail": null,
+    "aaEnrolledDate": null,
+    "avatarSource": "none",
+    "credentialsRemovedCount": 0,
+    "domainClaimed": null,
+    "email": "moodsly123@gmail.com",
+    "goldSunsetFreeTrialIdOrganization": null,
+    "gravatarHash": "70d90a97f4b4072f61266ea5d87e07c4",
+    "idBoards": [
+        "61b0bcb548a3825671ffa609",
+        "625b0f45fdc1e206912d7788",
+        "614a2fcc4b5cb70984d827e5",
+        "62f3563b9aaea840aa725ae8"
+    ],
+    "idOrganizations": [
+        "625b0f45fdc1e206912d7776"
+    ],
+    "idEnterprisesAdmin": [],
+    "limits": {
+        "boards": {
+            "totalPerMember": {
+                "status": "ok",
+                "disableAt": 4500,
+                "warnAt": 3600
+            }
+        },
+        "orgs": {
+            "totalPerMember": {
+                "status": "ok",
+                "disableAt": 850,
+                "warnAt": 680
+            }
+        }
+    },
+    "loginTypes": [
+        "atlassian",
+        "android"
+    ],
+    "marketingOptIn": {
+        "optedIn": true,
+        "date": "2021-12-10T18:48:02.125Z"
+    },
+    "messagesDismissed": [],
+    "oneTimeMessagesDismissed": [
+        "workspace-nav-enabled",
+        "workspace-nav-spotlight",
+        "close-menu-of-first-board",
+        "nusku.views-switcher-upsell-default-open",
+        "WorkspacesAutoNameAlert-625b0f45fdc1e206912d7776",
+        "ack-new-feature-BoardShareButton-1653084000000",
+        "ack-new-feature-WorkspaceLinks-1660165200000"
+    ],
+    "prefs": {
+        "privacy": {
+            "fullName": "public",
+            "avatar": "public"
+        },
+        "sendSummaries": true,
+        "minutesBetweenSummaries": 60,
+        "minutesBeforeDeadlineToNotify": 1440,
+        "colorBlind": false,
+        "locale": "en-US"
+    },
+    "trophies": [],
+    "uploadedAvatarHash": null,
+    "uploadedAvatarUrl": null,
+    "premiumFeatures": [
+        "additionalBoardBackgrounds",
+        "additionalStickers",
+        "customBoardBackgrounds",
+        "customEmoji",
+        "customStickers",
+        "plugins"
+    ],
+    "isAaMastered": true,
+    "ixUpdate": "178",
+    "boards": [
+        {
+            "id": "625b0f45fdc1e206912d7788",
+            "name": "Aquisize",
+            "closed": false,
+            "idOrganization": "625b0f45fdc1e206912d7776",
+            "pinned": false
+        },
+        {
+            "id": "61b0bcb548a3825671ffa609",
+            "name": "MVP",
+            "closed": false,
+            "idOrganization": "61b0ba3c2eca4687b237b07c",
+            "pinned": false
+        },
+        {
+            "id": "614a2fcc4b5cb70984d827e5",
+            "name": "Testing Phase",
+            "closed": false,
+            "idOrganization": "614a2f776703505279188fdb",
+            "pinned": false
+        }
+    ]
+}

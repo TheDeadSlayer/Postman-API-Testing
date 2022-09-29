@@ -1,0 +1,139 @@
+{
+	"id": "795b10cc-f701-40d7-ad21-12704076b073",
+	"name": "Trello Testing",
+	"timestamp": "2022-08-10T09:05:08.715Z",
+	"collection_id": "22501391-705f948a-6262-4dd4-bdb5-4e57b629b421",
+	"folder_id": 0,
+	"environment_id": "22501391-213f4aee-c255-48c9-b8c8-4850207f6e19",
+	"totalPass": 3,
+	"totalFail": 1,
+	"results": [
+		{
+			"id": "1db8696c-e766-4e41-9d3b-c4cca1cb642d",
+			"name": "Create a Board",
+			"url": "https://api.trello.com/1/boards/?name=Testing%20Board&key=6635a1b5ede3ea770dae1e0983f67cb7&token=1f69e7814815449f6a6a9492c7bf1b1c48a69b524aa16cc389fa21ccdd4f1985",
+			"time": 966,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Verify important parameters": true
+			},
+			"testPassFailCounts": {
+				"Verify important parameters": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				966
+			],
+			"allTests": [
+				{
+					"Verify important parameters": true
+				}
+			]
+		},
+		{
+			"id": "9efdb451-aca3-4fc3-8cd5-bd2e8b8ccaf8",
+			"name": "Get Member info",
+			"url": "https://api.trello.com/1/members/me?boards=open&key=6635a1b5ede3ea770dae1e0983f67cb7&token=1f69e7814815449f6a6a9492c7bf1b1c48a69b524aa16cc389fa21ccdd4f1985",
+			"time": 406,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Verify number of boards is above 1": true
+			},
+			"testPassFailCounts": {
+				"Verify number of boards is above 1": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				406
+			],
+			"allTests": [
+				{
+					"Verify number of boards is above 1": true
+				}
+			]
+		},
+		{
+			"id": "25522874-be88-43bf-a138-f66b599ef5e4",
+			"name": "Delete a Board",
+			"url": "https://api.trello.com/1/boards/62f374be5d0b8100525ad57b?key=6635a1b5ede3ea770dae1e0983f67cb7&token=1f69e7814815449f6a6a9492c7bf1b1c48a69b524aa16cc389fa21ccdd4f1985",
+			"time": 1459,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Respone is 200 OK": true,
+				"Verify Deletion Message": false
+			},
+			"testPassFailCounts": {
+				"Respone is 200 OK": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify Deletion Message": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				1459
+			],
+			"allTests": [
+				{
+					"Respone is 200 OK": true,
+					"Verify Deletion Message": false
+				}
+			]
+		},
+		{
+			"id": "f6e6bf1a-00b6-458f-97f7-b454d5bdba47",
+			"name": "Create a List",
+			"url": "https://api.trello.com/1/lists?name=Future%20Goals&idBoard=62f374be5d0b8100525ad57b&key=6635a1b5ede3ea770dae1e0983f67cb7&token=1f69e7814815449f6a6a9492c7bf1b1c48a69b524aa16cc389fa21ccdd4f1985",
+			"time": 501,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				501
+			],
+			"allTests": [
+				{}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 3332,
+	"collection": {
+		"requests": [
+			{
+				"id": "1db8696c-e766-4e41-9d3b-c4cca1cb642d",
+				"method": "POST"
+			},
+			{
+				"id": "9efdb451-aca3-4fc3-8cd5-bd2e8b8ccaf8",
+				"method": "GET"
+			},
+			{
+				"id": "25522874-be88-43bf-a138-f66b599ef5e4",
+				"method": "DELETE"
+			},
+			{
+				"id": "f6e6bf1a-00b6-458f-97f7-b454d5bdba47",
+				"method": "POST"
+			}
+		]
+	}
+}
